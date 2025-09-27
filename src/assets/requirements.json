@@ -1,0 +1,45 @@
+{
+  "ReproductionSystem": [
+    "Hunger",
+    "Position",
+    "Species"
+  ],
+  "HungerSystem": [
+    "Hunger"
+  ],
+  "EatingSystem": [
+    "Eating",
+    "Goal",
+    "Hunger",
+    "Position",
+    "Species"
+  ],
+  "MovementSystem": [
+    "BeingEaten",
+    "Eating",
+    "Facing",
+    "Goal",
+    "Position",
+    "Species",
+    "Velocity"
+  ],
+  "BehaviorSystem": [
+    "Eating",
+    "Facing",
+    "Goal",
+    "Hunger",
+    "Perception",
+    "Position",
+    "Species",
+    "Vision"
+  ],
+  "VisionSystem": [
+    "Facing",
+    "Perception",
+    "Position",
+    "Vision"
+  ],
+  "SpatialHashSystem": [
+    "Position"
+  ]
+}
