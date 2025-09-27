@@ -1,27 +1,22 @@
-import { SystemControl } from './SystemControl';
+import { EntitiesPanel } from '@/EntitiesPanel/EntitiesPanel';
+import { SystemPanel } from './SystemPanel/SystemPanel';
 import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from './ui/resizable';
-
-// interface EditorPanelProps {
-//     systemName: string
-// }
+import { WorldPanel } from '@/WorldPanel/WorldPanel';
 
 export function EditorPanel() {
-
+  
   return (
     <ResizablePanelGroup direction='horizontal'>
       <ResizablePanel defaultSize={50}>
-        <SystemControl systemName='Test1' />
-        <SystemControl systemName='Test2' />
+        <SystemPanel />
       </ResizablePanel>
       <ResizableHandle />
       <ResizablePanel defaultSize={50}>
-        <SystemControl systemName='Test1' />
-        <SystemControl systemName='Test2' />
+        <EntitiesPanel />
       </ResizablePanel>
       <ResizableHandle />
       <ResizablePanel defaultSize={50}>
-        <SystemControl systemName='Test1' />
-        <SystemControl systemName='Test2' />
+        <WorldPanel />
       </ResizablePanel>
     </ResizablePanelGroup>
   );

@@ -1,4 +1,4 @@
-import { useWorldStore } from '../stores/useWorldStore';
+import { useWorldStore } from '../../stores/useWorldStore';
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 
@@ -18,7 +18,7 @@ export function SystemControl({ systemName }: SystemControlProps) {
         onCheckedChange={() => toggle(systemName)}
       />
       <Label htmlFor={`plugin-${systemName}`} className="capitalize">
-        {systemName} System
+        {systemName}
       </Label>
     </div>
   );

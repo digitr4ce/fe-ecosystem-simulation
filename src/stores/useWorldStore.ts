@@ -3,7 +3,7 @@ import { create } from 'zustand';
 interface Entity {
   id: string;
   name: string;
-  components: Record<string, any>;
+  components: Record<string, unknown>;
 }
 
 interface WorldState {
