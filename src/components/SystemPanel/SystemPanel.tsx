@@ -1,18 +1,23 @@
-
-import requirementData from '@/static/requirements.json'
+import requirementData from '@/static/requirements.json';
 import { SystemControl } from './SystemControl';
-
-interface SystemComponentMapping {
-    [key: string]: string[];
-}
+import type { SystemComponentMapping } from '@/types';
 
 export function SystemPanel() {
   const requirements = requirementData as SystemComponentMapping;
-  const requirementsKeys = Object.keys(requirements)
+  const systemNames = Object.keys(requirements.system_requirements);
 
   return (
-    <div className="flex-col items-center space-x-2 p-2 border-b">
-      {requirementsKeys.map((key) => <SystemControl systemName={key} />)}
+    <div className="flex flex-col border rounded-md">
+      {systemNames.map((name, index) => (
+        <SystemControl
+          key={name}
+          systemName={name}
+          componentRequirements={requirements.system_requirements[name]}
+          systemDocstring={requirements.system_docs[name] || ''}
+          componentSchemas={requirements.component_schemas}
+          isLastItem={index === systemNames.length - 1}
+        />
+      ))}
     </div>
   );
 }

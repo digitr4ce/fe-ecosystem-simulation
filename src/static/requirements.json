@@ -1,45 +1,285 @@
 {
-  "ReproductionSystem": [
-    "Hunger",
-    "Position",
-    "Species"
-  ],
-  "HungerSystem": [
-    "Hunger"
-  ],
-  "EatingSystem": [
-    "Eating",
-    "Goal",
-    "Hunger",
-    "Position",
-    "Species"
-  ],
-  "MovementSystem": [
-    "BeingEaten",
-    "Eating",
-    "Facing",
-    "Goal",
-    "Position",
-    "Species",
-    "Velocity"
-  ],
-  "BehaviorSystem": [
-    "Eating",
-    "Facing",
-    "Goal",
-    "Hunger",
-    "Perception",
-    "Position",
-    "Species",
-    "Vision"
-  ],
-  "VisionSystem": [
-    "Facing",
-    "Perception",
-    "Position",
-    "Vision"
-  ],
-  "SpatialHashSystem": [
-    "Position"
-  ]
+  "system_requirements": {
+    "SpatialHashSystem": [
+      "Position"
+    ],
+    "VisionSystem": [
+      "Position",
+      "Facing",
+      "Vision",
+      "Perception"
+    ],
+    "BehaviorSystem": [
+      "Facing",
+      "Goal",
+      "Position",
+      "Vision",
+      "Species",
+      "Perception",
+      "BeingEaten",
+      "Hunger",
+      "Eating"
+    ],
+    "MovementSystem": [
+      "Facing",
+      "Velocity",
+      "BeingEaten",
+      "Goal",
+      "Position",
+      "Eating",
+      "Species"
+    ],
+    "EatingSystem": [
+      "BeingEaten",
+      "Goal",
+      "Hunger",
+      "Position",
+      "Eating",
+      "Species"
+    ],
+    "HungerSystem": [
+      "Hunger"
+    ],
+    "ReproductionSystem": [
+      "Hunger",
+      "Position",
+      "Species"
+    ],
+    "GrassSystem": [],
+    "ExampleSystem": [
+      "Hunger",
+      "Position",
+      "Velocity"
+    ]
+  },
+  "component_schemas": {
+    "SpatialHash": {
+      "parameters": [
+        {
+          "name": "cell_size",
+          "type": "float",
+          "required": false,
+          "default": 30.0
+        }
+      ],
+      "docstring": null
+    },
+    "Position": {
+      "parameters": [
+        {
+          "name": "x",
+          "type": "float",
+          "required": true,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "float",
+          "required": true,
+          "default": null
+        }
+      ],
+      "docstring": null
+    },
+    "Velocity": {
+      "parameters": [
+        {
+          "name": "dx",
+          "type": "float",
+          "required": false,
+          "default": 0.0
+        },
+        {
+          "name": "dy",
+          "type": "float",
+          "required": false,
+          "default": 0.0
+        }
+      ],
+      "docstring": null
+    },
+    "Facing": {
+      "parameters": [
+        {
+          "name": "angle",
+          "type": "float",
+          "required": false,
+          "default": 0.0
+        }
+      ],
+      "docstring": null
+    },
+    "Vision": {
+      "parameters": [
+        {
+          "name": "radius",
+          "type": "float",
+          "required": true,
+          "default": null
+        },
+        {
+          "name": "fov",
+          "type": "float",
+          "required": false,
+          "default": 360.0
+        }
+      ],
+      "docstring": null
+    },
+    "Perception": {
+      "parameters": [],
+      "docstring": null
+    },
+    "Species": {
+      "parameters": [
+        {
+          "name": "kind",
+          "type": "str",
+          "required": true,
+          "default": null
+        }
+      ],
+      "docstring": null
+    },
+    "Hunger": {
+      "parameters": [
+        {
+          "name": "max_energy",
+          "type": "float",
+          "required": true,
+          "default": null
+        },
+        {
+          "name": "metabolism",
+          "type": "float",
+          "required": true,
+          "default": null
+        },
+        {
+          "name": "energy",
+          "type": "float | None",
+          "required": false,
+          "default": null
+        }
+      ],
+      "docstring": null
+    },
+    "Goal": {
+      "parameters": [
+        {
+          "name": "kind",
+          "type": "str",
+          "required": false,
+          "default": "idle"
+        },
+        {
+          "name": "target",
+          "type": "int | None",
+          "required": false,
+          "default": null
+        }
+      ],
+      "docstring": null
+    },
+    "Eating": {
+      "parameters": [
+        {
+          "name": "target",
+          "type": "int",
+          "required": true,
+          "default": null
+        },
+        {
+          "name": "ticks_remaining",
+          "type": "int",
+          "required": true,
+          "default": null
+        }
+      ],
+      "docstring": null
+    },
+    "BeingEaten": {
+      "parameters": [
+        {
+          "name": "eater",
+          "type": "int",
+          "required": true,
+          "default": null
+        }
+      ],
+      "docstring": null
+    },
+    "ExampleComponent": {
+      "parameters": [
+        {
+          "name": "x",
+          "type": "float",
+          "required": true,
+          "default": null
+        },
+        {
+          "name": "y",
+          "type": "float",
+          "required": true,
+          "default": null
+        },
+        {
+          "name": "dx",
+          "type": "float",
+          "required": false,
+          "default": 0.0
+        },
+        {
+          "name": "dy",
+          "type": "float",
+          "required": false,
+          "default": 0.0
+        }
+      ],
+      "docstring": "Initialize the component with position and velocity.\n        \n        Args:\n            x: Initial X position\n            y: Initial Y position  \n            dx: Initial X velocity (default: 0.0)\n            dy: Initial Y velocity (default: 0.0)"
+    },
+    "Analyzer": {
+      "parameters": [
+        {
+          "name": "tree",
+          "type": "ast.AST",
+          "required": true,
+          "default": null
+        },
+        {
+          "name": "filename",
+          "type": "Path",
+          "required": true,
+          "default": null
+        }
+      ],
+      "docstring": null
+    }
+  },
+  "system_docs": {
+    "SpatialHashSystem": "This is a test docstring.",
+    "VisionSystem": null,
+    "BehaviorSystem": null,
+    "MovementSystem": null,
+    "EatingSystem": null,
+    "HungerSystem": null,
+    "ReproductionSystem": null,
+    "GrassSystem": null,
+    "ExampleSystem": "An example system that demonstrates component usage analysis.\n    \n    This system processes entities that have position and velocity,\n    updating their positions each frame."
+  },
+  "component_docs": {
+    "SpatialHash": null,
+    "Position": null,
+    "Velocity": null,
+    "Facing": null,
+    "Vision": null,
+    "Perception": null,
+    "Species": null,
+    "Hunger": null,
+    "Goal": null,
+    "Eating": null,
+    "BeingEaten": null,
+    "ExampleComponent": "An example component that demonstrates the enhanced analysis capabilities.\n    \n    This component stores position and velocity information for entities\n    that need to move around in 2D space.",
+    "Analyzer": null
+  }
 }
