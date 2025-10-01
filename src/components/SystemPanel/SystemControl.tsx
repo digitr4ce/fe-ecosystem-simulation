@@ -1,11 +1,11 @@
 import { useWorldStore } from '../../stores/useWorldStore';
 import { Switch } from "@/components/ui/switch";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '../ui/collapsible';
-import type { ComponentParameters, ComponentSchema } from '@/types';
+import type { ComponentParameter, ComponentSchema } from '@/lib/types';
 import { useMemo } from 'react';
 import { ChevronDown } from 'lucide-react';
 
-function ComponentDetails({ details }: { details: Record<string, ComponentParameters[]> }) {
+function ComponentDetails({ details }: { details: Record<string, ComponentParameter[]> }) {
   if (Object.keys(details).length === 0) {
     return <p className="text-sm text-muted-foreground">No components required.</p>;
   }
@@ -53,13 +53,13 @@ export function SystemControl({
   const isActive = useWorldStore((state) => state.activeSystems.includes(systemName));
   const toggleSystem = useWorldStore((state) => state.toggleSystem);
 
-  const requiredComponentDetails = useMemo<Record<string, ComponentParameters[]>>(() => {
+  const requiredComponentDetails = useMemo<Record<string, ComponentParameter[]>>(() => {
     return componentRequirements.reduce((acc, componentName) => {
       if (componentSchemas[componentName]) {
         acc[componentName] = componentSchemas[componentName].parameters;
       }
       return acc;
-    }, {} as Record<string, ComponentParameters[]>);
+    }, {} as Record<string, ComponentParameter[]>);
   }, [componentRequirements, componentSchemas]);
 
   const switchId = `plugin-${systemName}`;
@@ -68,7 +68,7 @@ export function SystemControl({
     <Collapsible className={`p-3 ${!isLastItem ? 'border-b' : ''}`}>
       <div className="flex items-center justify-between">
         <CollapsibleTrigger asChild className='cursor-pointer'>
-          <button className="flex items-center gap-2 text-left group"> {/* Added group for icon rotation */}
+          <button className="flex items-center gap-2 text-left group">
               {systemName}
             <ChevronDown className="h-4 w-4 transition-transform group-data-[state=open]:rotate-180" />
           </button>

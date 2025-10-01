@@ -1,9 +1,8 @@
-import requirementData from '@/static/requirements.json';
+import { useWorldStore } from '@/stores/useWorldStore';
 import { SystemControl } from './SystemControl';
-import type { SystemComponentMapping } from '@/types';
 
 export function SystemPanel() {
-  const requirements = requirementData as SystemComponentMapping;
+  const requirements = useWorldStore((state) => state.requirementsFile);
   const systemNames = Object.keys(requirements.system_requirements);
 
   return (

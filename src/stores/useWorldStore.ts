@@ -1,4 +1,6 @@
 import { create } from 'zustand';
+import requirementData from '@/static/requirements.json';
+import type { SystemComponentMapping } from '@/lib/types';
 
 interface Entity {
   id: string;
@@ -7,6 +9,7 @@ interface Entity {
 }
 
 interface WorldState {
+  requirementsFile: SystemComponentMapping;
   activeSystems: string[];
   entities: Record<string, Entity>;
 
@@ -16,6 +19,7 @@ interface WorldState {
 }
 
 export const useWorldStore = create<WorldState>((set) => ({
+  requirementsFile: requirementData,
   activeSystems: [],
   entities: {},
 

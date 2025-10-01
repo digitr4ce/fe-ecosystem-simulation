@@ -1,7 +1,7 @@
-import { EntitiesPanel } from '@/EntitiesPanel/EntitiesPanel';
-import { SystemPanel } from './SystemPanel/SystemPanel';
-import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from './ui/resizable';
-import { WorldPanel } from '@/WorldPanel/WorldPanel';
+import { EntitiesPanel } from '@/components/EntitiesPanel/EntitiesPanel';
+import { SystemPanel } from '../SystemPanel/SystemPanel';
+import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from '../ui/resizable';
+import { WorldPanel } from '@/components/WorldPanel/WorldPanel';
 
 export function EditorPanel() {
   

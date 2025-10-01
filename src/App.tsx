@@ -1,4 +1,4 @@
-import { EditorPanel } from "./components/EditorPanel"
+import { EditorPanel } from "./components/EditorPanel/EditorPanel"
  
 function App() {
   return (

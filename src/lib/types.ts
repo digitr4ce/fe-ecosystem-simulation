@@ -2,7 +2,7 @@ export interface Docs {
     [systemName: string]: string | null;
 }
 
-export interface ComponentParameters {
+export interface ComponentParameter {
     name: string;
     type: string;
     required: boolean;
@@ -11,7 +11,7 @@ export interface ComponentParameters {
 
 export interface ComponentSchema {
     [componentName: string]: {
-        parameters: ComponentParameters[]
+        parameters: ComponentParameter[]
         docstring: string | null;
     };
 }
